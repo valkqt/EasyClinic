@@ -29,7 +29,7 @@ Il flusso deve prevedere:
 * La possibilità di recuperare visite precedenti
 * La modifica di visite esistenti
 
-![Contact](images/contact.jpg)
+![Contact](https://bitbucket.org/cgmitaly/.net-assessment/raw/165e13b7b20cf1fc1ee83695dbb09f507b2d92ea/images/contact.png)
 
 ### Bonus:
 
