@@ -4,12 +4,15 @@
 Questo test ha lo scopo di verificare la tua conoscenza e i tuoi skills come sviluppatore .NET.
 
 Il focus è su:
+
 * comunicazione
 * strutturazione e organizzazione del tuo lavoro
 * qualità del tuo codice, documentazione e tests
 
+
 ## Requisiti generali e scopo
 * Esegui la push dei tuoi risultati in un nuovo branch nominato con il tuo cognome
+
 
 ## Tasks
  
