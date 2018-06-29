@@ -1,22 +1,15 @@
 # .NET Assessment
 
 ## Introduction
-This test is intended to assess your knowledge and skills as a .NET Developer. 
+Questo test ha lo scopo di verificare la tua conoscenza e i tuoi skills come sviluppatore .NET.
 
-We focus on:
+Il focus è su:
+* comunicazione
+* strutturazione e organizzazione del tuo lavoro
+* qualità del tuo codice, documentazione e tests
 
-* how you communicate
-* how you structure your work
-* the overall quality of your code, documentation and tests
-
-Bonus questions are optional. 
-
-
-## General requirements and scope
-* Please push your results as a new branch named as your surname.
-* If a task requires you to write your own code, put your files/project in a folder/package named taskX so that we know which task this is related to.
-* If a task requires you to provide textual answers, please provide them in a plain-text file (PDFs are fine, too). A single file for all the answers is fine.
-
+## Requisiti generali e scopo
+* Esegui la push dei tuoi risultati in un nuovo branch nominato con il tuo cognome
 
 ## Tasks
  
