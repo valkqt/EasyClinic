@@ -7,7 +7,7 @@ Il focus è su:
 
 * comunicazione
 * strutturazione e organizzazione del tuo lavoro
-* qualità del tuo codice, documentazione e tests
+* qualità del tuo codice, documentazione e test
 
 
 ## Requisiti generali e scopo
