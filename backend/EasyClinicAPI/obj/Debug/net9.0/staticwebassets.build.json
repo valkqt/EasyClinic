@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "vJn6yxIjzyZrNLAppxOPZ3vAX/sU0S0+LBt0SxmSR/g=",
+  "Source": "EasyClinicAPI",
+  "BasePath": "_content/EasyClinicAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

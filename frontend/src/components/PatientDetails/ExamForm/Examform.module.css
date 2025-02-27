@@ -1,0 +1,43 @@
+.form {
+  padding: 0.5rem 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.formFooter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.formDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.formGroup select {
+  max-width: 200px;
+}
+
+.dateTime {
+  display: flex;
+  gap: 3rem;
+}
+
+.dateTime .formGroup {
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+
+.dateTime .formGroup:first-child input {
+  min-width: 140px;
+}
+
+.displayText {
+  width: 800px;
+  padding: 0.5rem;
+}

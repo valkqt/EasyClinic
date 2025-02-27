@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Kumbh Sans";
+  src: url("/fonts/kumbh_sans/KumbhSans-VariableFont_YOPQ,wght.ttf");
+}
+
+* {
+  font-family: "Kumbh Sans";
+}
+.defaultBorder {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 0.33rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.toggleDisplay {
+  display: none !important;
+}
+
+input {
+  border-radius: 0.33rem;
+  cursor: pointer;
+}
+
+select {
+  width: 200px;
+  padding: 0.25rem;
+  background-color: white;
+  border-radius: 0.33rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+button {
+  background-color: whitesmoke;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0.25rem;
+  border-radius: 0.33rem !important;
+}
+
+[type="date"] {
+  width: 160px;
+}
+
+button:hover {
+  background-color: var(--green);
+}
+
+td:nth-child(odd),
+th:nth-child(odd) {
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+td,
+th {
+  padding: 8px;
+}
+
+:root {
+  --green: #e2ffd8;
+}

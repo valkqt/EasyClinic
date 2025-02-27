@@ -1,0 +1,6 @@
+@EasyClinicAPI_HostAddress = http://localhost:5171
+
+GET {{EasyClinicAPI_HostAddress}}/api/
+Accept: application/json
+
+###

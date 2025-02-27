@@ -1,0 +1,22 @@
+.table {
+  width: 240px;
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+.tableHeader {
+  background-color: rgb(207, 207, 207);
+}
+
+.tableRow:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+.selectedRow {
+  font-style: italic;
+  background-color: var(--green) !important;
+}
+
+.tableRow:hover {
+  background-color: rgb(230, 230, 230);
+}

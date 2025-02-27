@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardWrapper {
+  flex-basis: 33%;
+}
+
+.cardWrapper:hover {
+  background-color: whitesmoke;
+}
