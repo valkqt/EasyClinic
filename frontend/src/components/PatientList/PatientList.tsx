@@ -10,7 +10,6 @@ export function PatientList() {
   const [patients, setPatients] = useState<Patient[]>([]);
   useEffect(() => {
     getPatients().then((data) => {
-      console.log(data);
       setPatients(data);
     });
   }, []);

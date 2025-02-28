@@ -11,8 +11,8 @@ interface ExamsTableProps {
 }
 
 export function ExamsTable({ patient, setExam, exam }: ExamsTableProps) {
-  function isSelected(rowId: number): boolean {
-    return exam?.id === rowId;
+  function isSelected(date: string): boolean {
+    return exam?.dateTime === date;
   }
 
   return (
@@ -40,7 +40,7 @@ export function ExamsTable({ patient, setExam, exam }: ExamsTableProps) {
                   setExam(e);
                 }}
                 className={classNames(
-                  { [css.selectedRow]: isSelected(e.id) },
+                  { [css.selectedRow]: isSelected(e.dateTime) },
                   "pointer",
                   css.tableRow
                 )}

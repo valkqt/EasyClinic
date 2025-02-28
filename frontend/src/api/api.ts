@@ -1,9 +1,9 @@
 import { api } from "../resources/axios";
 import { Examination, Patient } from "../resources/types";
 
-export async function getPatientExams(id: number): Promise<Patient> {
+export async function getPatientExams(patientId: string): Promise<Patient> {
   const patient: Promise<Patient> = await api
-    .get(`/Patients/${id}`)
+    .get(`/Patients/${patientId}`)
     .then((res) => res.data);
 
   return patient;

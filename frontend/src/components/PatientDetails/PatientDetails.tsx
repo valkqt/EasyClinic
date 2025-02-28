@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useState } from "react";
+import { useLoaderData } from "react-router";
 import { useNavigate } from "react-router";
-import { getPatientExams } from "../../api/api";
 import { Examination, Patient } from "../../resources/types";
-import { parseParams } from "../../resources/functions/parseParams";
 import css from "./PatientDetails.module.css";
 import { PatientCard } from "../PatientCard/PatientCard";
 import classNames from "classnames";
 import ExamForm from "./ExamForm/ExamForm";
 import { ExamsTable } from "./ExamsTable/ExamsTable";
+import { compareAsc } from "date-fns";
 
 export function PatientDetails() {
-  const [patient, setPatient] = useState<Patient>();
-  const [currentExam, setCurrentExam] = useState<Examination | null>(null);
-  const params = useParams();
+  const data = useLoaderData<Patient>();
+  data.examinations.sort((a, b) =>
+    compareAsc(new Date(a.dateTime), new Date(b.dateTime))
+  );
+  const last = data.examinations[data.examinations.length - 1];
+
+  const [patient, setPatient] = useState<Patient>(data);
+  const [currentExam, setCurrentExam] = useState<Examination>(last);
+
   const navigate = useNavigate();
 
   function handleCreate() {
-    if (!patient) {
-      return;
-    }
-
     const alreadyExists: Examination | undefined = patient.examinations.find(
       (e) => e.id === 0
     );
@@ -32,7 +33,7 @@ export function PatientDetails() {
 
     const newExam = {
       id: 0,
-      anamnesis: "{}",
+      anamnesis: "",
       category: 0,
       motivation: 0,
       dateTime: new Date().toISOString(),
@@ -44,20 +45,6 @@ export function PatientDetails() {
       ...patient,
       examinations: [...patient.examinations, newExam],
     });
-  }
-
-  useEffect(() => {
-    const patientId = parseParams(params.patientId);
-    if (patientId < 0) {
-      return;
-    }
-    getPatientExams(patientId).then((data) => {
-      setPatient(data);
-    });
-  }, []);
-
-  if (patient == null) {
-    return;
   }
 
   return (
@@ -85,6 +72,7 @@ export function PatientDetails() {
           <button onClick={() => handleCreate()}>Nuova</button>
         </div>
         <ExamForm
+          key={currentExam.id}
           exam={currentExam}
           setExam={setCurrentExam}
           setPatient={setPatient}
