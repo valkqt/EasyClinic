@@ -19,6 +19,7 @@ export function PatientDetails() {
   const [patient, setPatient] = useState<Patient>(data);
   const [currentExam, setCurrentExam] = useState<Examination>(last);
 
+  console.log(currentExam);
   const navigate = useNavigate();
 
   function handleCreate() {
@@ -74,7 +75,7 @@ export function PatientDetails() {
         </div>
       </div>
       <div className={css.examContainer}>
-        <div style={{ position: "relative" }}>
+        <div className={css.leftContainer}>
           <div className={classNames(css.tableContainer, "defaultBorder")}>
             <ExamsTable
               patient={patient.examinations}

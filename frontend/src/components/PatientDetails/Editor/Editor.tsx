@@ -10,18 +10,16 @@ interface EditorProps {
 }
 
 export function Editor({ details, setDetails, isEditing }: EditorProps) {
-  // const { quill, quillRef } = useQuill();
-
   return (
     <div
       className={classNames(css.quillContainer, { toggleDisplay: !isEditing })}
     >
-      {/* <div ref={quillRef}></div> */}
       <ReactQuill
         theme="snow"
         value={details}
         onChange={setDetails}
         defaultValue={details}
+        style={{ height: "100%" }}
       />
     </div>
   );

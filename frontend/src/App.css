@@ -2,3 +2,8 @@
   max-height: 100vh;
   /* background-color: #fff4d7; */
 }
+
+.quill {
+  display: flex;
+  flex-direction: column;
+}

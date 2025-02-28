@@ -1,6 +1,5 @@
 .table {
   width: 240px;
-  margin-bottom: 1rem;
   background-color: white;
 }
 
@@ -19,4 +18,7 @@
 
 .tableRow:hover {
   background-color: rgb(230, 230, 230);
+}
+.filler {
+  padding: 20px;
 }

@@ -1,4 +1,3 @@
-import { SinglePatient } from "./SinglePatient/SinglePatient";
 import css from "./PatientList.module.css";
 import { useEffect, useState } from "react";
 import { getPatients } from "../../api/api";

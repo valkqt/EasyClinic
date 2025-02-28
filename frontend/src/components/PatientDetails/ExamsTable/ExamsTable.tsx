@@ -41,6 +41,12 @@ export function ExamsTable({ patient, setExam, exam }: ExamsTableProps) {
               <td>{getDatePortion(e.dateTime)}</td>
             </tr>
           ))}
+          {Array.from(Array(14 - patient.length).keys()).map((i) => (
+            <tr key={i} className={css.tableRow}>
+              <td className={classNames(css.filler)}></td>
+              <td className={classNames(css.filler)}></td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>

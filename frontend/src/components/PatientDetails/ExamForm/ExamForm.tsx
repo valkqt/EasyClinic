@@ -23,12 +23,15 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
   );
   const [category, setCategory] = useState(exam.category);
   const [motivation, setMotivation] = useState(exam.motivation);
-  const [localDate, setLocalDate] = useState<string>(exam.dateTime);
+  const [localDate, setLocalDate] = useState<string>(
+    exam.dateTime.slice(0, 10)
+  );
   const [details, setDetails] = useState<string>(exam.anamnesis);
 
   const defaultDate =
     exam != null ? exam.dateTime.slice(0, 10) : now.toISOString().slice(0, 10);
   const date = localDate ?? defaultDate;
+  console.log(localDate);
 
   async function handleSubmit() {
     const newDate = new Date(date);
@@ -71,7 +74,7 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
               onChange={(e) => {
                 setLocalDate(e.target.value);
               }}
-              value={date}
+              value={localDate}
             />
           </FormGroup>
           <FormGroup setEditing={setIsEditing} isEditing={isEditing}>
@@ -119,31 +122,31 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
           </select>
         </FormGroup>
         <div
-          className={classNames(css.extendedFormGroup, { pointer: !isEditing })}
+          className={classNames(css.editorContainer, { pointer: !isEditing })}
           onClick={() => setIsEditing(true)}
         >
-          <FormGroup setEditing={setIsEditing} isEditing={isEditing}>
-            <label htmlFor="Anamnesi">Anamnesi</label>
-            <Editor
-              details={details}
-              setDetails={setDetails}
-              isEditing={isEditing}
-            />
-            <Interweave
-              content={details}
-              className={classNames(
-                { toggleDisplay: isEditing },
-                css.displayText,
-                "defaultBorder"
-              )}
-            />
-            {isEditing && (
-              <div className={css.formFooter}>
-                <div></div>
-                <button type="submit">Salva</button>
-              </div>
+          <label htmlFor="Anamnesi">Anamnesi</label>
+          <Editor
+            details={details}
+            setDetails={setDetails}
+            isEditing={isEditing}
+          />
+          <Interweave
+            content={details}
+            className={classNames(
+              { toggleDisplay: isEditing },
+              css.displayText,
+              "defaultBorder"
             )}
-          </FormGroup>
+          />
+          <div
+            className={classNames(css.formFooter, {
+              invisible: !isEditing,
+            })}
+          >
+            <div></div>
+            <button type="submit">Salva</button>
+          </div>
         </div>
       </div>
     </form>

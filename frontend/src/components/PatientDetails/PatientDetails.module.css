@@ -37,19 +37,9 @@
   max-height: 600px;
   position: relative;
   margin-bottom: 1rem;
+  box-sizing: content-box !important;
 }
 
-/* .plus {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  background-color: whitesmoke;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 0.33rem;
-} */
+.leftContainer {
+  padding-bottom: 0.5rem;
+}

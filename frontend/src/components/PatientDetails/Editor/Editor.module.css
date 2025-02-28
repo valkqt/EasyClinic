@@ -1,4 +1,4 @@
 .quillContainer {
-  max-width: 800px;
+  width: 800px;
   flex-grow: 1;
 }
