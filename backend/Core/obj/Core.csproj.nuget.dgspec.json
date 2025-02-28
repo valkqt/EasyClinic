@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\valk\\source\\repos\\EasyClinic\\backend\\Core\\Core.csproj": {}
+    "C:\\Users\\valk\\source\\repos\\EasyClinicRemote\\backend\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\valk\\source\\repos\\EasyClinic\\backend\\Core\\Core.csproj": {
+    "C:\\Users\\valk\\source\\repos\\EasyClinicRemote\\backend\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\valk\\source\\repos\\EasyClinic\\backend\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\valk\\source\\repos\\EasyClinicRemote\\backend\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\valk\\source\\repos\\EasyClinic\\backend\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\valk\\source\\repos\\EasyClinicRemote\\backend\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\valk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\valk\\source\\repos\\EasyClinic\\backend\\Core\\obj\\",
+        "outputPath": "C:\\Users\\valk\\source\\repos\\EasyClinicRemote\\backend\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

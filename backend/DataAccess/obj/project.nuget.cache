@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qy5BnZBJ/W0=",
+  "dgSpecHash": "5dV9vobrBbA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\valk\\source\\repos\\EasyClinic\\backend\\DataAccess\\DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\valk\\source\\repos\\EasyClinicRemote\\backend\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\valk\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\valk\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
