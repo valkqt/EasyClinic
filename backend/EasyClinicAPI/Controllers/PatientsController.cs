@@ -1,5 +1,7 @@
 ﻿using Core.Interfaces.Services;
 using Core.Models;
+using FluentValidation;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EasyClinicAPI.Controllers
@@ -21,6 +23,11 @@ namespace EasyClinicAPI.Controllers
         {
             IEnumerable<Patient> patients = await _service.GetPatients();
 
+            if (patients.Count() == 0)
+            {
+                return NoContent();
+            }
+
             return Ok(patients);
         }
 
@@ -39,10 +46,11 @@ namespace EasyClinicAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Patient patient)
         {
-            
-                await _service.CreatePatient(patient);
-                return Ok();
 
-                    }
+            await _service.CreatePatient(patient);
+            return Created();
+
+
+        }
     }
 }

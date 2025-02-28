@@ -15,7 +15,6 @@ namespace DataAccess.Repositories
     {
         private readonly IConfiguration _configuration;
         private readonly EasyClinicContext _context;
-
         public PatientRepository(IConfiguration configuration, EasyClinicContext context)
         {
             _configuration = configuration;

@@ -46,10 +46,10 @@ namespace DataAccess.Repositories
                     @DATETIME = exam.DateTime,
                     @PATIENTID = exam.PatientId,
                 };
-                string sql = "INSERT INTO Examinations (DateTime, Anamnesis, Motivation, Category, PatientId) VALUES (@DATETIME, @ANAMNESIS, @MOTIVATION, @CATEGORY, @PATIENTID)";
-
+                string sql = "INSERT INTO Examinations (DateTime, Anamnesis, Motivation, Category, PatientId) VALUES (@DATETIME, @ANAMNESIS, @MOTIVATION, @CATEGORY, @PATIENTID) SELECT SCOPE_IDENTITY()";
                 await connection.ExecuteAsync(sql, parameters);
 
+                
             }
         }
 

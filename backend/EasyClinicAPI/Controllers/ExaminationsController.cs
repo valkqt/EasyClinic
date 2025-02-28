@@ -1,5 +1,6 @@
 ﻿using Core.Interfaces.Services;
 using Core.Models;
+using FluentValidation;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,29 +28,20 @@ namespace EasyClinicAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Examination exam)
         {
-            try
-            {
-                await _service.CreateExamination(exam);
-                return Ok();
 
-            } catch
-            {
-                return BadRequest();
-            }
+
+            await _service.CreateExamination(exam);
+
+                return Created();
 
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Examination exam)
         {
-            try
-            {
-                await _service.UpdateExamination(exam);
-                return Ok();
-            } catch
-            {
-                return BadRequest();
-            }
+
+            await _service.UpdateExamination(exam);
+                return Ok(exam);
         }
     }
 }

@@ -43,3 +43,4 @@ C:\Users\valk\source\repos\EasyClinicRemote\backend\Core\obj\Debug\net9.0\Core.d
 C:\Users\valk\source\repos\EasyClinicRemote\backend\Core\obj\Debug\net9.0\refint\Core.dll
 C:\Users\valk\source\repos\EasyClinicRemote\backend\Core\obj\Debug\net9.0\Core.pdb
 C:\Users\valk\source\repos\EasyClinicRemote\backend\Core\obj\Debug\net9.0\ref\Core.dll
+C:\Users\valk\source\repos\EasyClinicRemote\backend\Core\obj\Debug\net9.0\Core.csproj.AssemblyReference.cache

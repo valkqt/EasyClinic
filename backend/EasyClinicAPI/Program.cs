@@ -3,12 +3,14 @@ using DataAccess.Contexts;
 using DataAccess.Repositories;
 using Core.Services;
 using Core.Interfaces.Services;
-using Microsoft.AspNetCore.Builder;
 using FluentMigrator.Runner;
 using DataAccess.Migrations;
 using DataAccess.Extensions;
 using Core.Interfaces.Repositories;
-
+using FluentValidation;
+using Core.Models;
+using Core.Validators;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,8 +26,10 @@ builder.Services.AddScoped<IExaminationRepository, ExaminationRepository>();
 builder.Services.AddScoped<IExaminationService, ExaminationService>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IValidator<Patient>, PatientValidator>();
+builder.Services.AddScoped<IValidator<Examination>, ExaminationValidator>();
 
-
+builder.Services.AddFluentValidationAutoValidation();
 
 
 builder.Services.AddSingleton<EasyClinicContext>();
@@ -33,7 +37,7 @@ builder.Services.AddLogging(c => c.AddFluentMigratorConsole())
         .AddFluentMigratorCore()
         .ConfigureRunner(c => c.AddSqlServer2012()
             .WithGlobalConnectionString(builder.Configuration.GetConnectionString("EasyClinicConn"))
-            .ScanIn(typeof(M0007_FixingTable).Assembly).For.Migrations());
+            .ScanIn(typeof(M0004_ChangePatientGender).Assembly).For.Migrations());
 
 
 
@@ -48,6 +52,7 @@ if (app.Environment.IsDevelopment())
 
 }
 
+
 app.UseCors(builder =>
 {
     builder
@@ -60,6 +65,7 @@ app.UseCors(builder =>
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
 
 app.MapControllers();
 
