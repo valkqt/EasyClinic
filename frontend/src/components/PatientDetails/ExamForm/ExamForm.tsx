@@ -4,22 +4,18 @@ import { categoryMap, motivationMap } from "../../../resources/globals";
 import { useState } from "react";
 import { Examination, Patient } from "../../../resources/types";
 import classNames from "classnames";
-import {
-  createExamination,
-  getPatientExams,
-  updateExamination,
-} from "../../../api/api";
+import { createExamination, updateExamination } from "../../../api/api";
 import { FormGroup } from "./FormGroup/FormGroup";
 import { Interweave } from "interweave";
 
 interface ExamFormProps {
   exam: Examination;
   setExam: (exam: Examination) => void;
-  setPatient: (patient: Patient) => void;
   patient: Patient;
+  onSubmit: (state: Examination) => void;
 }
 
-export default function ExamForm({ exam, setPatient, patient }: ExamFormProps) {
+export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
   const now = new Date();
   const [isEditing, setIsEditing] = useState(false);
   const [time, setTime] = useState(
@@ -53,22 +49,14 @@ export default function ExamForm({ exam, setPatient, patient }: ExamFormProps) {
       createExamination(newExam, patient.id);
     } else {
       updateExamination({ ...newExam, id: exam.id }, patient.id);
-      setPatient({
-        ...patient,
-        examinations: [...patient.examinations],
-      });
+      onSubmit({ ...newExam, id: exam.id });
     }
-    
-    await getPatientExams(patient.id.toString()).then((data) => {
-      setPatient(data);
-    });
   }
 
   return (
     <form
       onSubmit={(e) => {
         handleSubmit();
-        console.log(exam);
         e.preventDefault();
       }}
       className={css.form}

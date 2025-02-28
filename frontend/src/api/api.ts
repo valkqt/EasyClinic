@@ -26,7 +26,6 @@ export async function updateExamination(
   exam: Examination,
   patientId: number
 ): Promise<void> {
-  console.log({ ...exam, patientId: patientId });
   api
     .put(`/Examinations/${exam.id}`, { ...exam, patientId: patientId })
     .then((res) => console.log(res.data));

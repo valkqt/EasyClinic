@@ -47,6 +47,19 @@ export function PatientDetails() {
     });
   }
 
+  function handleFormSubmit(exam: Examination) {
+    const exams = patient.examinations;
+
+    setPatient({
+      ...patient,
+      examinations: exams.toSpliced(
+        exams.findIndex((e) => e.id === exam.id),
+        1,
+        exam
+      ),
+    });
+  }
+
   return (
     <div className={classNames(css.container)}>
       <div className={classNames(css.examHeader, "defaultBorder")}>
@@ -64,7 +77,7 @@ export function PatientDetails() {
         <div style={{ position: "relative" }}>
           <div className={classNames(css.tableContainer, "defaultBorder")}>
             <ExamsTable
-              patient={patient}
+              patient={patient.examinations}
               setExam={setCurrentExam}
               exam={currentExam}
             />
@@ -75,7 +88,7 @@ export function PatientDetails() {
           key={currentExam.id}
           exam={currentExam}
           setExam={setCurrentExam}
-          setPatient={setPatient}
+          onSubmit={handleFormSubmit}
           patient={patient}
         />
       </div>
