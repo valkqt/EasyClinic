@@ -1,9 +1,21 @@
 .wrapper {
   max-height: 100vh;
-  /* background-color: #fff4d7; */
 }
 
 .quill {
   display: flex;
   flex-direction: column;
+}
+
+.defaultBorder {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 0.33rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.toggleDisplay {
+  display: none !important;
 }

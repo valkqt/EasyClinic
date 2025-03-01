@@ -1,12 +1,17 @@
 import css from "./Examform.module.css";
 import { Editor } from "../Editor/Editor";
-import { categoryMap, motivationMap } from "../../../resources/globals";
-import { useState } from "react";
+import {
+  categoryMap,
+  Motivation,
+  motivationMap,
+} from "../../../resources/globals";
+import { FormEvent, useState } from "react";
 import { Examination, Patient } from "../../../resources/types";
 import classNames from "classnames";
 import { createExamination, updateExamination } from "../../../api/api";
 import { FormGroup } from "./FormGroup/FormGroup";
 import { Interweave } from "interweave";
+import { format } from "date-fns";
 
 interface ExamFormProps {
   exam: Examination;
@@ -18,22 +23,13 @@ interface ExamFormProps {
 export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
   const now = new Date();
   const [isEditing, setIsEditing] = useState(false);
-  const [time, setTime] = useState(
-    exam ? exam.dateTime.slice(11, 16) : now.toISOString().slice(11, 16)
-  );
+  const [time, setTime] = useState(format(exam.dateTime || now, "HH:mm"));
   const [category, setCategory] = useState(exam.category);
   const [motivation, setMotivation] = useState(exam.motivation);
-  const [localDate, setLocalDate] = useState<string>(
-    exam.dateTime.slice(0, 10)
-  );
-  const [details, setDetails] = useState<string>(exam.anamnesis);
+  const [date, setDate] = useState(format(exam.dateTime || now, "yyyy-MM-dd"));
+  const [details, setDetails] = useState(exam.anamnesis);
 
-  const defaultDate =
-    exam != null ? exam.dateTime.slice(0, 10) : now.toISOString().slice(0, 10);
-  const date = localDate ?? defaultDate;
-  console.log(localDate);
-
-  async function handleSubmit() {
+  async function handleSubmit(e: FormEvent) {
     const newDate = new Date(date);
     const [hours, minutes] = time.split(":");
     newDate.setHours(Number(hours));
@@ -49,49 +45,45 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
 
     // 0 is a fake id, represents a new resource being created
     if (exam.id === 0) {
-      createExamination(newExam, patient.id);
+      const resourceId = await createExamination(newExam, patient.id);
+      onSubmit({ ...newExam, id: resourceId });
     } else {
-      updateExamination({ ...newExam, id: exam.id }, patient.id);
+      await updateExamination({ ...newExam, id: exam.id }, patient.id);
       onSubmit({ ...newExam, id: exam.id });
     }
+
+    e.preventDefault();
   }
 
   return (
-    <form
-      onSubmit={(e) => {
-        handleSubmit();
-        e.preventDefault();
-      }}
-      className={css.form}
-    >
+    <form onSubmit={handleSubmit} className={css.form}>
       <div className={css.formDetails}>
         <div className={css.dateTime}>
           <FormGroup setEditing={setIsEditing} isEditing={isEditing}>
-            <label htmlFor="date">Data</label>
+            <label>Data</label>
             <input
               type="date"
               disabled={!isEditing}
               onChange={(e) => {
-                setLocalDate(e.target.value);
+                setDate(e.target.value);
               }}
-              value={localDate}
+              value={date}
             />
           </FormGroup>
           <FormGroup setEditing={setIsEditing} isEditing={isEditing}>
-            <label htmlFor="time">Ora</label>
+            <label>Ora</label>
             <input
               type="time"
               disabled={!isEditing}
               value={time}
               onChange={(e) => {
-                console.log(exam?.dateTime.slice(0, 10) + e.target.value);
                 setTime(e.target.value);
               }}
             />
           </FormGroup>
         </div>
         <FormGroup setEditing={setIsEditing} isEditing={isEditing}>
-          <label htmlFor="Tipologia">Tipologia</label>
+          <label>Tipologia</label>
           <select
             disabled={!isEditing}
             value={category}
@@ -99,24 +91,24 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
               setCategory(parseInt(e.target.value));
             }}
           >
-            {Object.entries(categoryMap).map((_, i) => (
-              <option value={i} key={i}>
-                {categoryMap[i]}
+            {Object.entries(categoryMap).map(([value, label]) => (
+              <option value={value} key={value}>
+                {label}
               </option>
             ))}
           </select>
         </FormGroup>
         <FormGroup setEditing={setIsEditing} isEditing={isEditing}>
-          <label htmlFor="Motivo">Motivo</label>
+          <label>Motivo</label>
           <select
             disabled={!isEditing}
             value={motivation}
-            defaultValue={2}
+            defaultValue={Motivation.Controllo}
             onChange={(e) => setMotivation(parseInt(e.target.value))}
           >
-            {Object.entries(motivationMap).map((_, i) => (
-              <option value={i} key={i}>
-                {motivationMap[i]}
+            {Object.entries(motivationMap).map(([value, label]) => (
+              <option value={value} key={value}>
+                {label}
               </option>
             ))}
           </select>
@@ -125,7 +117,7 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
           className={classNames(css.editorContainer, { pointer: !isEditing })}
           onClick={() => setIsEditing(true)}
         >
-          <label htmlFor="Anamnesi">Anamnesi</label>
+          <label>Anamnesi</label>
           <Editor
             details={details}
             setDetails={setDetails}
@@ -144,7 +136,6 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
               invisible: !isEditing,
             })}
           >
-            <div></div>
             <button type="submit">Salva</button>
           </div>
         </div>

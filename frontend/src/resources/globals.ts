@@ -1,20 +1,21 @@
-import { Patient } from "./types";
-
-export const patient = {
-  id: 12,
-  firstName: "plofi",
-  lastName: "briccoli",
-  photo: "images/generic_person.jpg",
-  fiscalCode: "AAAABBBBCCCCDDDD",
-};
+export enum Motivation {
+  PrimaVisita = 0,
+  Controllo = 1,
+  Urgenza = 2,
+}
 
 export const motivationMap: Record<number, string> = {
-  0: "Prima Visita",
-  1: "Controllo",
-  2: "Urgenza",
+  [Motivation.PrimaVisita]: "Prima Visita",
+  [Motivation.Controllo]: "Controllo",
+  [Motivation.Urgenza]: "Urgenza",
 };
 
+export enum Category {
+  Ambulatoriale = 0,
+  Domiciliare = 1,
+}
+
 export const categoryMap: Record<number, string> = {
-  0: "Ambulatoriale",
-  1: "Domiciliare",
+  [Category.Ambulatoriale]: "Ambulatoriale",
+  [Category.Domiciliare]: "Domiciliare",
 };

@@ -1,16 +1,12 @@
 import "./App.css";
 import { Header } from "./components/Header/Header";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  createBrowserRouter,
-} from "react-router";
-import { PatientDetails } from "./components/PatientDetails/PatientDetails.tsx";
+import { createBrowserRouter } from "react-router";
+import { PatientDetails } from "./components/PatientDetails/PatientDetails";
 import { PatientList } from "./components/PatientList/PatientList.tsx";
 import { getPatientExams, getPatients } from "./api/api.ts";
 import { RouterProvider } from "react-router/dom";
 import { Suspense } from "react";
+import { compareAsc } from "date-fns";
 
 function App() {
   const router = createBrowserRouter([
@@ -28,7 +24,10 @@ function App() {
       ),
       loader: async ({ params }) => {
         if (params.patientId) {
-          return getPatientExams(params.patientId);
+          const data = await getPatientExams(params.patientId);
+          data.examinations.sort((a, b) => compareAsc(a.dateTime, b.dateTime));
+
+          return data;
         }
       },
     },

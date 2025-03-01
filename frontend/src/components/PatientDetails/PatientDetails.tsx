@@ -11,19 +11,15 @@ import { compareAsc } from "date-fns";
 
 export function PatientDetails() {
   const data = useLoaderData<Patient>();
-  data.examinations.sort((a, b) =>
-    compareAsc(new Date(a.dateTime), new Date(b.dateTime))
-  );
   const last = data.examinations[data.examinations.length - 1];
 
   const [patient, setPatient] = useState<Patient>(data);
   const [currentExam, setCurrentExam] = useState<Examination>(last);
 
-  console.log(currentExam);
   const navigate = useNavigate();
 
-  function handleCreate() {
-    const alreadyExists: Examination | undefined = patient.examinations.find(
+  function handleNewExamClick() {
+    const alreadyExists = patient.examinations.find(
       (e) => e.id === 0
     );
 
@@ -51,13 +47,19 @@ export function PatientDetails() {
   function handleFormSubmit(exam: Examination) {
     const exams = patient.examinations;
 
-    setPatient({
-      ...patient,
-      examinations: exams.toSpliced(
+    const sortedExams = exams
+      .toSpliced(
         exams.findIndex((e) => e.id === exam.id),
         1,
         exam
-      ),
+      )
+      .sort((a, b) => compareAsc(a.dateTime, b.dateTime));
+
+    setCurrentExam(exam);
+
+    setPatient({
+      ...patient,
+      examinations: sortedExams,
     });
   }
 
@@ -83,7 +85,7 @@ export function PatientDetails() {
               exam={currentExam}
             />
           </div>
-          <button onClick={() => handleCreate()}>Nuova</button>
+          <button onClick={handleNewExamClick}>Nuova</button>
         </div>
         <ExamForm
           key={currentExam.id}
