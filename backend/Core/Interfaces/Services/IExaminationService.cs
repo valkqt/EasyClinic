@@ -10,7 +10,7 @@ namespace Core.Interfaces.Services
     public interface IExaminationService
     {
         public Task<IEnumerable<Examination>> GetExaminations();
-        public Task CreateExamination(Examination exam);
+        public Task<int> CreateExamination(Examination exam);
         public Task UpdateExamination(Examination exam);
 
     }

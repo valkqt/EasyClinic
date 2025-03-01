@@ -10,7 +10,7 @@ namespace Core.Interfaces
     public interface IExaminationRepository
     {
         public Task<IEnumerable<Examination>> ListAsync();
-        public Task Create(Examination exam);
+        public Task<int> Create(Examination exam);
         public Task Update(Examination exam);
 
     }

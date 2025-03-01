@@ -30,9 +30,9 @@ namespace EasyClinicAPI.Controllers
         {
 
 
-            await _service.CreateExamination(exam);
+            int id = await _service.CreateExamination(exam);
 
-                return Created();
+                return Created(default(string), id);
 
         }
 

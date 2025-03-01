@@ -23,9 +23,9 @@ namespace Core.Services
 
         }
 
-        public async Task CreateExamination(Examination exam)
+        public async Task<int> CreateExamination(Examination exam)
         {
-             await _repository.Create(exam);
+             return await _repository.Create(exam);
         }
 
         public async Task UpdateExamination(Examination exam)

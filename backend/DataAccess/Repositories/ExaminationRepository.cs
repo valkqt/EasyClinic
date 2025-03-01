@@ -35,7 +35,7 @@ namespace DataAccess.Repositories
             }
         }
 
-        public async Task Create(Examination exam)
+        public async Task<int> Create(Examination exam)
         {
             using (var connection = _context.Connect())
             {
@@ -46,8 +46,9 @@ namespace DataAccess.Repositories
                     @DATETIME = exam.DateTime,
                     @PATIENTID = exam.PatientId,
                 };
-                string sql = "INSERT INTO Examinations (DateTime, Anamnesis, Motivation, Category, PatientId) VALUES (@DATETIME, @ANAMNESIS, @MOTIVATION, @CATEGORY, @PATIENTID) SELECT SCOPE_IDENTITY()";
-                await connection.ExecuteAsync(sql, parameters);
+                string sql = "INSERT INTO Examinations (DateTime, Anamnesis, Motivation, Category, PatientId) OUTPUT INSERTED.Id " +
+                    "VALUES (@DATETIME, @ANAMNESIS, @MOTIVATION, @CATEGORY, @PATIENTID) ";
+                return await connection.QuerySingleAsync<int>(sql, parameters);
 
                 
             }
