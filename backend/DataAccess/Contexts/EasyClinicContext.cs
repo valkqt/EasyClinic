@@ -1,11 +1,11 @@
 ﻿using System;
-using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
-using Microsoft.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace DataAccess.Contexts
 {
@@ -18,6 +18,7 @@ namespace DataAccess.Contexts
             _configuration = configuration;
         }
 
-        public IDbConnection Connect() => new SqlConnection(_configuration.GetConnectionString("EasyClinicConn"));
+        public IDbConnection Connect() =>
+            new SqlConnection(_configuration.GetConnectionString("EasyClinicConn"));
     }
 }

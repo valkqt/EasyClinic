@@ -19,9 +19,7 @@ export function PatientDetails() {
   const navigate = useNavigate();
 
   function handleNewExamClick() {
-    const alreadyExists = patient.examinations.find(
-      (e) => e.id === 0
-    );
+    const alreadyExists = patient.examinations.find((e) => e.id === 0);
 
     if (alreadyExists) {
       setCurrentExam(alreadyExists);

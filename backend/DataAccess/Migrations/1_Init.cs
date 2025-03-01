@@ -10,13 +10,8 @@ namespace DataAccess.Migrations
     [Migration(1)]
     public class _1_Init : Migration
     {
-        public override void Up()
-        {
-        }
+        public override void Up() { }
 
-        public override void Down()
-        {
-        }
-
+        public override void Down() { }
     }
 }

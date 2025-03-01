@@ -8,10 +8,10 @@ namespace EasyClinicAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class ExaminationsController : ControllerBase
     {
         private readonly IExaminationService _service;
+
         public ExaminationsController(IExaminationService service)
         {
             _service = service;
@@ -20,7 +20,7 @@ namespace EasyClinicAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetExaminationsAsync()
         {
-            IEnumerable<Examination> examinations = await _service.GetExaminations();
+            IEnumerable<Examination> examinations = await _service.GetExaminationsAsync();
 
             return Ok(examinations);
         }
@@ -28,20 +28,16 @@ namespace EasyClinicAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Examination exam)
         {
+            int id = await _service.CreateExaminationAsync(exam);
 
-
-            int id = await _service.CreateExamination(exam);
-
-                return Created(default(string), id);
-
+            return Created(default(string), id);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Examination exam)
         {
-
-            await _service.UpdateExamination(exam);
-                return Ok(exam);
+            await _service.UpdateExaminationAsync(exam);
+            return Ok(exam);
         }
     }
 }

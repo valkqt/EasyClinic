@@ -8,7 +8,6 @@ namespace EasyClinicAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class PatientsController : ControllerBase
     {
         private readonly IPatientService _service;
@@ -21,7 +20,7 @@ namespace EasyClinicAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            IEnumerable<Patient> patients = await _service.GetPatients();
+            IEnumerable<Patient> patients = await _service.GetPatientsAsync();
 
             if (patients.Count() == 0)
             {
@@ -31,10 +30,10 @@ namespace EasyClinicAPI.Controllers
             return Ok(patients);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}/examinations")]
         public async Task<IActionResult> Get(int id)
         {
-            Patient? patient = await _service.GetPatientById(id);
+            Patient? patient = await _service.GetPatientByIdAsync(id);
 
             if (patient == null)
             {
@@ -46,11 +45,8 @@ namespace EasyClinicAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Patient patient)
         {
-
-            await _service.CreatePatient(patient);
+            await _service.CreatePatientAsync(patient);
             return Created();
-
-
         }
     }
 }

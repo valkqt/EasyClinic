@@ -11,13 +11,15 @@ namespace Core.Models
     {
         FirstVisit,
         Checkup,
-        Urgent
+        Urgent,
     }
+
     public enum Category
     {
         Home,
-        Outpatient
+        Outpatient,
     }
+
     public class Examination
     {
         public int Id { get; set; }
@@ -27,16 +29,14 @@ namespace Core.Models
         public Category Category { get; set; }
         public int PatientId { get; set; }
 
-        //public Examination(int id, DateTime dateTime, string anamnesis, Motivation motivation, Category category)
-        //{
-        //    Id = id;
-        //    DateTime = dateTime;
-        //    Anamnesis = anamnesis;
-        //    Motivation = motivation;
-        //    Category = category;
-        //}
-
-        public Examination(int id, DateTime dateTime,  string anamnesis, Motivation motivation, Category category, int patientId)
+        public Examination(
+            int id,
+            DateTime dateTime,
+            string anamnesis,
+            Motivation motivation,
+            Category category,
+            int patientId
+        )
         {
             Id = id;
             DateTime = dateTime;

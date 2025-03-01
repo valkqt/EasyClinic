@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System.Text;
 using System.Threading.Tasks;
 using FluentMigrator.Runner;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace DataAccess.Extensions
 {
@@ -21,7 +21,6 @@ namespace DataAccess.Extensions
                 {
                     migrationService.ListMigrations();
                     migrationService.MigrateUp();
-
                 }
                 catch
                 {
@@ -31,6 +30,5 @@ namespace DataAccess.Extensions
 
             return host;
         }
-
     }
 }
