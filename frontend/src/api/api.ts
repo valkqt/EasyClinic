@@ -5,6 +5,8 @@ export function getPatientExams(patientId: string): Promise<Patient> {
   return api.get(`/Patients/${patientId}/examinations`).then((res) => res.data);
 }
 
+//plofi
+
 export function createExamination(
   exam: Examination,
   patientId: number
