@@ -22,7 +22,7 @@ CREATE TABLE Examinations (
     Category int NOT NULL,
     PatientId int NOT NULL,
     PRIMARY KEY (Id),
-    CONSTRAINT FK_PatientExamination FOREIGN KEY (PatientId) REFERENCES Patients(Id),
+    CONSTRAINT FK_PatientExamination FOREIGN KEY (PatientId) REFERENCES Patients(Id) ON DELETE CASCADE,
     CONSTRAINT CHK_Motivation CHECK (Motivation >= 0 AND Motivation <= 2),
     CONSTRAINT CHK_Category CHECK (Category >= 0 AND Motivation <= 1),
 );
@@ -36,15 +36,15 @@ INSERT INTO Patients VALUES
 ('Sofia', 'JD85F1234P', '2000-09-11', '2025-02-18 16:45:22', null, 1, 'Neri');
 
 INSERT INTO Examinations VALUES 
-    ('2025-02-26 14:30:00', 'Routine blood test', 0, 0, 1),
+    ('2024-02-26 14:30:00', 'Routine blood test', 0, 0, 1),
     ('2025-02-25 09:00:00', 'Chest X-ray for cough symptoms', 1, 0, 1),
-    ('2025-02-24 10:15:00', 'ECG for irregular heartbeats', 0, 1, 2),
+    ('2024-02-24 10:15:00', 'ECG for irregular heartbeats', 0, 1, 2),
     ('2025-02-23 11:45:00', 'MRI scan of the brain', 1, 1, 2),
-    ('2025-02-26 14:30:00', 'Ultrasound of the abdomen for pain assessment', 0, 0, 3),
+    ('2024-02-26 14:30:00', 'Ultrasound of the abdomen for pain assessment', 0, 0, 3),
     ('2025-02-25 09:00:00', 'Follow-up consultation for post-surgery recovery', 1, 0, 3),
-    ('2025-02-24 10:15:00', 'Spirometry for asthma management', 0, 1, 4),
+    ('2024-02-24 10:15:00', 'Spirometry for asthma management', 0, 1, 4),
     ('2025-02-23 11:45:00', 'Skin biopsy for suspicious mole', 1, 1, 4),
-    ('2025-02-26 14:30:00', 'Hearing test for auditory concerns', 0, 0, 5),
+    ('2024-02-26 14:30:00', 'Hearing test for auditory concerns', 0, 0, 5),
     ('2025-02-25 09:00:00', 'MRI scan of the spine for chronic back pain', 1, 0, 5),
-    ('2025-02-24 10:15:00', 'Colonoscopy for colorectal cancer screening', 0, 1, 6),
+    ('2024-02-24 10:15:00', 'Colonoscopy for colorectal cancer screening', 0, 1, 6),
     ('2025-02-23 11:45:00', 'CT scan of the chest for persistent cough', 1, 1, 6);
