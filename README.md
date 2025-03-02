@@ -8,9 +8,8 @@ EasyClinic è un piccolo gestionale per tracciare la storia delle visite di ogni
 
 In caso si volesse ricostruire localmente il progetto nella repository è incluso un file "queries.txt" che contiene istruzioni per ricreare il database localmente, e per connettersi sarà sufficiente inserire la connection string dentro appsettings.json e sostituire l'URL nel file /src/resources/axios.ts con localhost.
 
-La connection string avrà questo aspetto (SQL Server Default Instance): "Data Source=YOURCOMPUTERNAME;Initial Catalog=EasyClinicLocal;Integrated Security=True;TrustServerCertificate=True"
-
-
+La connection string avrà questo aspetto (SQL Server Default Instance):
+"Data Source=YOURCOMPUTERNAME;Initial Catalog=EasyClinicLocal;Integrated Security=True;TrustServerCertificate=True"
 
 ## Tech stack
 
