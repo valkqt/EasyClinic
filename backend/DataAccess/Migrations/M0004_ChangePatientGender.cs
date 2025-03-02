@@ -10,6 +10,8 @@ namespace DataAccess.Migrations
     [Migration(4)]
     public class M0004_ChangePatientGender : Migration
     {
+
+        // Example migration: changes value type of a table
         public override void Up()
         {
             Create.Column("Gender").OnTable("Patients").AsInt32().NotNullable();

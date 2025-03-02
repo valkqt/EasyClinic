@@ -1,39 +1,29 @@
-# .NET Assessment
+## Introduzione
 
-## Introduction
-Questo test ha lo scopo di verificare la tua conoscenza e i tuoi skills come sviluppatore .NET.
+EasyClinic è un piccolo gestionale per tracciare la storia delle visite di ogni paziente.
 
-Il focus è su:
+## Setup
 
-* comunicazione
-* strutturazione e organizzazione del tuo lavoro
-* qualità del tuo codice, documentazione e test
+- Il sito è online all'url https://easy-clinic-five.vercel.app/.
 
+In caso si volesse ricostruire localmente il progetto nella repository è incluso un file "queries.txt" che contiene istruzioni per ricreare il database localmente, e per connettersi sarà sufficiente inserire la connection string dentro appsettings.json.
 
-## Requisiti generali e scopo
-* Esegui la push dei tuoi risultati in un nuovo branch nominato con il tuo cognome
+La connection string avrà questo aspetto (SQL Server Default Instance): "Data Source=YOURCOMPUTERNAME;Initial Catalog=EasyClinicLocal;Integrated Security=True;TrustServerCertificate=True"
 
+## Tech stack
 
-## Tasks
- 
-### Sviluppa un'applicazione completa
-Sviluppa un'applicazione completamente funzionante che deve poter consentire la registrazione di una o più visite per ogni paziente. Il database può essere prepopolato con un set predefinito di pazienti.
-Il flusso deve prevedere:
+EasyClinic API è una Web API che utilizza l'ambiente .NET Core e strutturata seguendo le idee della Clean Architecture, ed è divisa in Data Access Layer, Application Layer e User Interface Layer.
+Alcune librerie di supporto all'API sono:
 
-* La selezione di un paziente
-* La creazione di una visita inserendo le informazioni richieste (vedi immagine)
-* La possibilità di recuperare visite precedenti
-* La modifica di visite esistenti
+- Dapper - Micro-ORM per l'accesso ai dati
+- FluentMigrator - Supporto alle migrazioni di dati con Dapper
+- FluentValidator - Validazione dei modelli lato server
+- MSSQL
 
-![Contact](https://bitbucket.org/cgmitaly/.net-assessment/raw/165e13b7b20cf1fc1ee83695dbb09f507b2d92ea/images/contact.png)
+La User Interface di EasyClinic è stata creata usando React.js + Typescript e utilizza alcune librerie comuni come:
 
-### Bonus:
-
-* Scrittura di unit tests per le classi più importanti (non è necessario coprire ogni singola classe, testare alcune classi è sufficiente)
-
-## Non-functional requirements:
-* Scegli liberamente se l'applicazione deve essere desktop, web, mobile
-* L'accesso ai dati può essere locale, utilizzare API REST o un approccio misto
-* Applica, se necessario, il pattern MVC o MVVM
-* Utilizza liberamente qualsiasi libreria open source o qualsiasi framework che preferisci
-* Utilizza liberamente i pattern architetturali che ritieni necessari
+- React-router: Routing lato client e gestione delle chiamate API al caricamento delle pagine
+- date-fns: Helper per la gestione delle date
+- React-Quill: Rich Text Editor
+- classnames: Helper per le classi HTML
+- Bootstrap: Framework CSS

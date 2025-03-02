@@ -10,37 +10,39 @@ namespace DataAccess.Migrations
     [Migration(2)]
     public class M0002_FirstMigration : Migration
     {
+        // Example migration: Creates a table
         public override void Up()
         {
-            Create
-                .Table("Patients")
-                .WithColumn("Id")
-                .AsInt32()
-                .PrimaryKey()
-                .Identity()
-                .WithColumn("FirstName")
-                .AsString(255)
-                .NotNullable()
-                .WithColumn("LastName")
-                .AsInt32()
-                .NotNullable()
-                .WithColumn("Gender")
-                .AsInt32()
-                .NotNullable()
-                .WithColumn("FiscalCode")
-                .AsString(16)
-                .NotNullable()
-                .WithColumn("DateOfBirth")
-                .AsDateTime2()
-                .NotNullable()
-                .WithColumn("CreatedAt")
-                .AsDateTime2()
-                .NotNullable();
+            //    Create
+            //        .Table("Patients")
+            //        .WithColumn("Id")
+            //        .AsInt32()
+            //        .PrimaryKey()
+            //        .Identity()
+            //        .WithColumn("FirstName")
+            //        .AsString(255)
+            //        .NotNullable()
+            //        .WithColumn("LastName")
+            //        .String(255)
+            //        .NotNullable()
+            //        .WithColumn("Gender")
+            //        .AsInt32()
+            //        .NotNullable()
+            //        .WithColumn("FiscalCode")
+            //        .AsString(16)
+            //        .NotNullable()
+            //        .WithColumn("DateOfBirth")
+            //        .AsDateTime2()
+            //        .NotNullable()
+            //        .WithColumn("CreatedAt")
+            //        .AsDateTime2()
+            //        .NotNullable();
+            //
         }
 
         public override void Down()
         {
-            Delete.Table("Patients");
+            //Delete.Table("Patients");
         }
     }
 }

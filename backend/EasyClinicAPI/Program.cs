@@ -10,6 +10,7 @@ using DataAccess.Migrations;
 using DataAccess.Repositories;
 using FluentMigrator.Runner;
 using FluentValidation;
+using Microsoft.Extensions.Options;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 builder.Services.AddScoped<IExaminationRepository, ExaminationRepository>();
 builder.Services.AddScoped<IExaminationService, ExaminationService>();
@@ -38,6 +40,8 @@ builder
             .ScanIn(typeof(M0004_ChangePatientGender).Assembly)
             .For.Migrations()
     );
+
+
 
 var app = builder.Build();
 
