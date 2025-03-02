@@ -43,6 +43,8 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
       anamnesis: details,
     };
 
+    e.preventDefault();
+
     // 0 is a fake id, represents a new resource being created
     if (exam.id === 0) {
       const resourceId = await createExamination(newExam, patient.id);
@@ -51,8 +53,6 @@ export default function ExamForm({ exam, onSubmit, patient }: ExamFormProps) {
       await updateExamination({ ...newExam, id: exam.id }, patient.id);
       onSubmit({ ...newExam, id: exam.id });
     }
-
-    e.preventDefault();
   }
 
   return (
