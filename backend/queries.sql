@@ -24,7 +24,7 @@ CREATE TABLE Examinations (
     PRIMARY KEY (Id),
     CONSTRAINT FK_PatientExamination FOREIGN KEY (PatientId) REFERENCES Patients(Id) ON DELETE CASCADE,
     CONSTRAINT CHK_Motivation CHECK (Motivation >= 0 AND Motivation <= 2),
-    CONSTRAINT CHK_Category CHECK (Category >= 0 AND Motivation <= 1),
+    CONSTRAINT CHK_Category CHECK (Category >= 0 AND Category <= 1),
 );
 
 INSERT INTO Patients VALUES 
